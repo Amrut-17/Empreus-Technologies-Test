@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Advent+Pro:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;500;600;700&family=Alegreya:wght@900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar{
+    width: 100%;
+    height: auto;
+}
+
+.navs{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    /* background: linear-gradient(to bottom right, cyan, rgb(80, 80, 250), cyan); */
+    max-height: 64px;
+}
+
+.nav-logo h1{
+    font-family: 'Alegreya', serif;
+    /* font-weight: 600; */
+    /* font-size: 1rem; */
+    word-spacing: 5px;
+    letter-spacing: 1px;
+}
+
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: .7rem;
+
+}
+
+.list li{
+    list-style: none;
+    margin-left: 30px;
+    /* border: 2px solid red; */
+    padding-top: .5rem;
+}
+
+.list li:hover{
+    border-bottom: 2px solid #f75990;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.list li a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Advent Pro', sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    padding: .5rem;
+    letter-spacing: 1.5px;
+}
+

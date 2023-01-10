@@ -1,0 +1,90 @@
+{% extends 'app/core.html' %}
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="all-events mt-5">
+        {% for event in events %}
+        <div class="event-card">
+            <div class="agenda">
+                <strong>
+                    {{event.title}}
+                </strong>
+            </div>
+            <div class="other-info">
+                <div class="photo">
+                    {% if event and event.speakers_avatar %}
+                    <img src="{{event.speakers_avatar.url}}" onclick="window.open('{{event.speakers_avatar.url}}', 'Image')" height="80px" width='100px' alt="My Image">
+                    {% endif %}
+                </div>
+                <div class="details">
+                    <div class="">
+                        {% if event and event.speaker_name %}
+                        <b> By: {{event.speaker_name}} </b>
+                        {% endif %} | 
+                        {% if event and event.date_select %}
+                        <b> {{event.date_select}} </b>
+                        {% endif %}
+                    </div>
+                    <div class="">
+                        {% comment %} {{event.duration}} Minutes | Time: {{event.start_time|date:'g:i A'}} | {{event.end_time|date:'g:i A'}} {% endcomment %}
+                        {% if event and event.duration %}
+                        Duration: {{event.duration.hours}} Hour(s) {{event.duration.minutes}} Minute(s) | 
+                        {% endif %}
+                        {% if event and event.start_time %}
+                        Time: {{event.start_time}} |
+                        {% endif %}
+                        {% if event and event.end_time %}
+                        {{event.end_time}}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
+
+
+
+{% comment %} <div class="container-fluid">
+    <div class="d-flex" id="flex-box">
+        {% for event in events %}
+        <div class="card">
+            <div class="card-header text-center">
+                <b>{{event.title}}</b>
+            </div>
+            <div class="card-body d-flex flex-row justify-content-between">
+                <div class="">
+                    {% if event and event.speakers_avatar %}
+                    <img src="{{event.speakers_avatar.url}}" onclick="window.open('{{event.speakers_avatar.url}}', 'Image')" height="100px" alt="My Image">
+                    {% endif %}
+                </div>
+                <div class="">
+                    {% if event and event.id %}
+                    <b>ID:</b> {{event.id}}
+                    {% endif %}
+                    {% if event and event.speaker_name %}
+                    <b style="margin-left:10px;">Speaker:</b> {{event.speaker_name}} <br>
+                    {% endif %}
+                    {% if event and event.date_select %}
+                    <b>Date:</b> {{event.date_select}} <br>
+                    {% endif %}
+                    {% if event and event.duration %}
+                    <b>Duration:</b> {{event.duration.hours}} Hour(s) {{event.duration.minutes}} Minute(s) <br>
+                    {% endif %}
+                    {% if event and event.start_time %}
+                    <b>from:</b> {{event.start_time}}
+                    {% endif %}
+                    {% if event and event.end_time %}
+                    <b>to:</b> {{event.end_time}}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div> {% endcomment %}

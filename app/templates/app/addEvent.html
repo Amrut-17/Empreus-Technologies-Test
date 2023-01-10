@@ -1,0 +1,72 @@
+{% extends 'app/core.html' %}
+{% block title %}
+    Add Event
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class='col-md-6 shadow mx-auto'>
+            <div class="alert alert-info text-center"><strong>Add Event</strong></div>
+            <div class="alert alert-success p4">
+                <form action="/add/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title"  class='form-control' required><br>
+
+                    <label for="person_name">Person Name:</label>
+                    <input type="text" id="person_name" class='form-control' name="personName" required><br>
+
+                    <label for="person_photo">Person Photo:</label>
+                    <input type="file" id="person_photo" class='form-control' class='form-control' name="personPhoto" accept="image/*" required><br>
+
+                    <label for="date_select">Date:</label>
+                    <input type="date" id="date_select" class='form-control' name="dateSelect" required><br>
+
+
+                    <label for="start_time">Start Time:</label>
+                    <input type="time" id="start_time" class='form-control' name="startTime" onchange="set_start_time()" required><br>
+
+                    <label for="end_time">End Time:</label>
+                    <input type="time" id="end_time" class='form-control' name="endTime" onchange="set_end_time()" required><br>
+
+                    <label for="duration">Duration:</label>
+                    <input type="text" id="duration" class='form-control' name="duration" readonly required><br>
+
+                    <input type="submit" value="Create Event" class='btn btn-primary'>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        let start_time = null;
+        let end_time = null;
+        function set_start_time() {
+            start_time = document.getElementById("start_time").value;
+            set_duration();
+        }
+        function set_end_time() {
+            end_time = document.getElementById("end_time").value;
+            set_duration();
+        }
+        function set_duration() {
+            if (start_time && end_time) {
+                let d1 = new Date("01/01/2007 " + start_time);
+                let d2 = new Date("01/01/2007 " + end_time);
+                let hours = 0;
+                let minutes = 0;
+                if(d1.getMinutes() > d2.getMinutes()) {
+                    hours = (d2.getHours() - 1) - d1.getHours();
+                    minutes = (d2.getMinutes() + 60) - d1.getMinutes();
+                }else{
+                    hours = d2.getHours() - d1.getHours();
+                    minutes = d2.getMinutes() - d1.getMinutes();
+                }
+                document.getElementById("duration").value = hours + ":" + minutes + ":00";
+            }
+        }
+
+    </script>
+{% endblock content %}
+
+
+

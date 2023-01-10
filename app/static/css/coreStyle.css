@@ -1,0 +1,38 @@
+
+
+.all-events{
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.event-card{
+    width: 650px;
+    height: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin: 10px;
+    background: #f2f4f4;
+}
+
+.event-card .agenda{
+    color: rgb(0, 64, 123);
+    font-size: 1.2rem;
+}
+
+.other-info{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.other-info .details{
+    margin-left: 2rem;
+    color:rgb(0, 64, 123);
+}
